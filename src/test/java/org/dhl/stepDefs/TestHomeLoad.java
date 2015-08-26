@@ -29,7 +29,7 @@ public class TestHomeLoad{
         catch(AssertionError ae){
             try {
                  testStep = TestHomeLoad.class.getDeclaredMethod("dhl_home_page_accessed_in_browser", null).getDeclaredAnnotation(Given.class).value();
-                 Log.error(testStep + " failed");
+                 Log.error(testStep + " failed for " + ae.getClass().getSimpleName());
             }
             catch(NoSuchMethodException nsm){
                 Log.error(nsm.getMessage());
