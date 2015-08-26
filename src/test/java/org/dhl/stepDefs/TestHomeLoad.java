@@ -24,7 +24,7 @@ public class TestHomeLoad{
         String testStep;
 
         try {
-            assertTrue(BrowserUtil.driver.getCurrentUrl().equals("http://www.dhl.com/en.htm"));
+            assertTrue(BrowserUtil.driver.getCurrentUrl().equals("http://www.dhl.com/en.html"));
         }
         catch(AssertionError ae){
             try {
