@@ -8,6 +8,7 @@ import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
+import org.dhl.utils.Log;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -20,10 +21,19 @@ public class TestHomeLoad{
 
     @Given("^DHL Home Page accessed in browser$")
     public void dhl_home_page_accessed_in_browser() {
+        String testStep;
+
         try {
-            assertTrue(BrowserUtil.driver.getCurrentUrl().equals("http://www.dhl.com/en.html"));
+            assertTrue(BrowserUtil.driver.getCurrentUrl().equals("http://www.dhl.com/en.htm"));
         }
         catch(AssertionError ae){
+            try {
+                 testStep = TestHomeLoad.class.getDeclaredMethod("dhl_home_page_accessed_in_browser", null).getDeclaredAnnotation(Given.class).value();
+                 Log.error(testStep + " failed");
+            }
+            catch(NoSuchMethodException nsm){
+                Log.error(nsm.getMessage());
+            }
             throw(ae);
         }
     }
@@ -32,6 +42,8 @@ public class TestHomeLoad{
     @Then("^DHL Home Page should be loaded in browser$")
     public void dhl_home_page_should_be_loaded_in_browser()
     {
+        String testStep;
+
         (new WebDriverWait(BrowserUtil.driver, 10)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.getTitle().equals("DHL | Global | English");
@@ -69,9 +81,25 @@ public class TestHomeLoad{
         }
 
         catch(NoSuchElementException nse){
+            try {
+                testStep = TestHomeLoad.class.getDeclaredMethod("dhl_home_page_should_be_loaded_in_browser", null).getDeclaredAnnotation(Then.class).value();
+                Log.error(testStep + " failed for " + nse.getClass().getSimpleName());
+            }
+            catch(NoSuchMethodException nsm){
+                Log.error(nsm.getMessage());
+            }
+
             throw(nse);
         }
         catch(AssertionError ae){
+            try {
+                testStep = TestHomeLoad.class.getDeclaredMethod("dhl_home_page_should_be_loaded_in_browser", null).getDeclaredAnnotation(Then.class).value();
+                Log.error(testStep + " failed for " + ae.getClass().getSimpleName());
+            }
+            catch(NoSuchMethodException nsm){
+                Log.error(nsm.getMessage());
+            }
+
             throw(ae);
         }
     }
