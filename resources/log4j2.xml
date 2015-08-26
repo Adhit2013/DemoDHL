@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="error">
+    <Properties>
+        <Property name="log_path">logs</Property>
+    </Properties>
+
+    <Appenders>
+        <RollingFile name="file_log" fileName="${log_path}/DemoDHL.log"
+                     filePattern="${log_path}/DemoDHL-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%c{1}] %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="org.dhl" level="info" additivity="false">
+            <appender-ref ref="file_log"/>
+        </Logger>
+    </Loggers>
+</Configuration>
