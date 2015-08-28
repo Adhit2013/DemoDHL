@@ -17,10 +17,10 @@ import java.util.NoSuchElementException;
 
 import static junit.framework.Assert.assertTrue;
 
-public class TestHomeLoad{
+public class HomeLoad {
 
-    @Given("^DHL Home Page accessed in browser$")
-    public void dhl_home_page_accessed_in_browser() {
+    @Given("^User access DHL Home Page in browser$")
+    public void user_access_dhl_home_page_in_browser() {
         String testStep;
 
         try {
@@ -28,7 +28,7 @@ public class TestHomeLoad{
         }
         catch(AssertionError ae){
             try {
-                 testStep = TestHomeLoad.class.getDeclaredMethod("dhl_home_page_accessed_in_browser", null).getDeclaredAnnotation(Given.class).value();
+                 testStep = HomeLoad.class.getDeclaredMethod("user_access_dhl_home_page_in_browser", null).getDeclaredAnnotation(Given.class).value();
                  Log.error(testStep + " failed for " + ae.getClass().getSimpleName());
             }
             catch(NoSuchMethodException nsm){
@@ -82,7 +82,7 @@ public class TestHomeLoad{
 
         catch(NoSuchElementException nse){
             try {
-                testStep = TestHomeLoad.class.getDeclaredMethod("dhl_home_page_should_be_loaded_in_browser", null).getDeclaredAnnotation(Then.class).value();
+                testStep = HomeLoad.class.getDeclaredMethod("dhl_home_page_should_be_loaded_in_browser", null).getDeclaredAnnotation(Then.class).value();
                 Log.error(testStep + " failed for " + nse.getClass().getSimpleName());
             }
             catch(NoSuchMethodException nsm){
@@ -93,7 +93,7 @@ public class TestHomeLoad{
         }
         catch(AssertionError ae){
             try {
-                testStep = TestHomeLoad.class.getDeclaredMethod("dhl_home_page_should_be_loaded_in_browser", null).getDeclaredAnnotation(Then.class).value();
+                testStep = HomeLoad.class.getDeclaredMethod("dhl_home_page_should_be_loaded_in_browser", null).getDeclaredAnnotation(Then.class).value();
                 Log.error(testStep + " failed for " + ae.getClass().getSimpleName());
             }
             catch(NoSuchMethodException nsm){

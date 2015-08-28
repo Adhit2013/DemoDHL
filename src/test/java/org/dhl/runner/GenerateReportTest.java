@@ -1,7 +1,8 @@
 package org.dhl.runner;
 
-import junit.framework.*;
+import junit.framework.TestCase;
 import net.masterthought.cucumber.ReportBuilder;
+import org.dhl.utils.Log;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -10,7 +11,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class GenerateReportTest extends TestCase {
+public class GenerateReportTest extends TestCase{
 
 
     public void testGenerateReport(){
@@ -18,7 +19,7 @@ public class GenerateReportTest extends TestCase {
         SimpleDateFormat formatDate = new SimpleDateFormat("yyyy.MM.dd-HH.mm.ss");
         String reportGenerationTimeStamp = formatDate.format(reportDate);
 
-        System.out.println("Generating report on: " + reportGenerationTimeStamp);
+        Log.info("Generating report on: " + reportGenerationTimeStamp);
 
 
         try {
@@ -50,11 +51,7 @@ public class GenerateReportTest extends TestCase {
         }
 
         catch(Exception e){
-            System.out.println(e);
+            Log.error("Failed to generate report -  " + e.getMessage());
         }
-
-
-
-
     }
 }
