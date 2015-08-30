@@ -20,29 +20,43 @@ import static junit.framework.Assert.assertTrue;
 public class HomeLoad {
 
     @Given("^User access DHL Home Page in browser$")
-    public void user_access_dhl_home_page_in_browser() {
+    public void user_access_dhl_home_page_in_browser() throws Throwable{
+
         String testStep;
 
         try {
+            testStep = HomeLoad.class.getDeclaredMethod("user_access_dhl_home_page_in_browser", null).getDeclaredAnnotation(Given.class).value();
+        }
+
+        catch(NoSuchMethodException nsme){
+            Log.error(nsme.getMessage());
+            throw(nsme);
+        }
+
+        try {
             assertTrue(BrowserUtil.driver.getCurrentUrl().equals("http://www.dhl.com/en.html"));
+            Log.info(testStep + " passed");
         }
         catch(AssertionError ae){
-            try {
-                 testStep = HomeLoad.class.getDeclaredMethod("user_access_dhl_home_page_in_browser", null).getDeclaredAnnotation(Given.class).value();
                  Log.error(testStep + " failed for " + ae.getClass().getSimpleName());
-            }
-            catch(NoSuchMethodException nsm){
-                Log.error(nsm.getMessage());
-            }
-            throw(ae);
+                 throw(ae);
         }
     }
 
 
     @Then("^DHL Home Page should be loaded in browser$")
-    public void dhl_home_page_should_be_loaded_in_browser()
-    {
+    public void dhl_home_page_should_be_loaded_in_browser() throws Throwable{
+
         String testStep;
+
+        try{
+            testStep = HomeLoad.class.getDeclaredMethod("dhl_home_page_should_be_loaded_in_browser", null).getDeclaredAnnotation(Then.class).value();
+        }
+
+        catch(NoSuchMethodException nsme){
+            Log.error(nsme.getMessage());
+            throw(nsme);
+        }
 
         (new WebDriverWait(BrowserUtil.driver, 10)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
@@ -78,30 +92,18 @@ public class HomeLoad {
             assertTrue(Home_Page.tab_DHL_Services().isDisplayed());
             assertTrue(Home_Page.tab_Industry_Sector().isDisplayed());
             assertTrue(Home_Page.tab_AboutUs().isDisplayed());
+
+            Log.info(testStep + " passed");
         }
 
-        catch(NoSuchElementException nse){
-            try {
-                testStep = HomeLoad.class.getDeclaredMethod("dhl_home_page_should_be_loaded_in_browser", null).getDeclaredAnnotation(Then.class).value();
-                Log.error(testStep + " failed for " + nse.getClass().getSimpleName());
-            }
-            catch(NoSuchMethodException nsm){
-                Log.error(nsm.getMessage());
-            }
-
-            throw(nse);
+        catch(NoSuchElementException nsee){
+                Log.error(testStep + " failed for " + nsee.getClass().getSimpleName());
+                throw(nsee);
         }
         catch(AssertionError ae){
-            try {
-                testStep = HomeLoad.class.getDeclaredMethod("dhl_home_page_should_be_loaded_in_browser", null).getDeclaredAnnotation(Then.class).value();
                 Log.error(testStep + " failed for " + ae.getClass().getSimpleName());
+                throw(ae);
             }
-            catch(NoSuchMethodException nsm){
-                Log.error(nsm.getMessage());
-            }
-
-            throw(ae);
-        }
     }
 
     @After
