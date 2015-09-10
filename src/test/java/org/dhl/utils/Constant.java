@@ -13,6 +13,7 @@ public class Constant {
     public static final String Driver_Path;
     public static final String URL;
     public static final String ScreenShot_Path;
+    public static final String Resource_Path;
 
     static {
         try {
@@ -24,8 +25,9 @@ public class Constant {
             System.out.println("Project properties file not found");
         }
 
-        Driver_Path = props.getProperty("project.directory") + "\\resources\\chromedriver.exe";
         URL = "http://www.dhl.com";
-        ScreenShot_Path = props.getProperty("project.directory") + "\\screenshots";
+        Driver_Path = props.getProperty("project.directory") + "\\resources\\chromedriver.exe";
+        Resource_Path = props.getProperty("project.directory") + "\\resources";
+        ScreenShot_Path = Resource_Path + "\\screenshots";
     }
 }

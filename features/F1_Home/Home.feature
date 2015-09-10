@@ -10,3 +10,21 @@ Feature: As a user I want to view DHL Home Page
     Given User access DHL Home Page in browser
     When  User access Express menu
     Then  Express menu contents should be displayed
+
+    Scenario Outline: User navigates number tabs in Home Page
+
+      Given User access DHL Home Page in browser
+      When  User navigate <number> tab
+      Then  Home_<number>.png should be displayed
+
+      Examples:
+        | number |
+        |   1    |
+        |   2    |
+        |   3    |
+        |   4    |
+        |   5    |
+        |   6    |
+        |   7    |
+        |   8    |
+        |   9    |

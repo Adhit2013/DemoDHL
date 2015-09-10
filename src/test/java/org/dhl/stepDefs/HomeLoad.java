@@ -34,12 +34,17 @@ public class HomeLoad {
         }
 
         try {
+            Home_Page.Logo().click();
             assertTrue(BrowserUtil.driver.getCurrentUrl().equals("http://www.dhl.com/en.html"));
             Log.info(testStep + " passed");
         }
         catch(AssertionError ae){
                  Log.error(testStep + " failed for " + ae.getClass().getSimpleName());
                  throw(ae);
+        }
+        catch(NoSuchElementException nsee){
+            Log.error(testStep + " failed for " + nsee.getClass().getSimpleName());
+            throw(nsee);
         }
     }
 
@@ -115,5 +120,4 @@ public class HomeLoad {
         }
 
     }
-
 }

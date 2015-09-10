@@ -10,14 +10,27 @@ import org.dhl.utils.BrowserUtil;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class Home_Page extends BrowserUtil{
 
         private static WebElement element = null;
+        private static List<WebElement> elements = null;
 
         public Home_Page (WebDriver driver){
             super(driver);
+        }
+
+        public static WebElement Logo() throws NoSuchElementException{
+            try{
+                element = driver.findElement(By.xpath(".//*[@id='logo']"));
+                Log.info("[" + Home_Page.class.getSimpleName() + "] - " + "DHL logo found on the Home Page");
+            }catch (NoSuchElementException nsee){
+                Log.error("[" + Home_Page.class.getSimpleName() + "] - " + "DHL logo not found on the Home Page");
+                throw(nsee);
+            }
+            return element;
         }
 
         public static WebElement menu_Express() throws NoSuchElementException{
@@ -185,6 +198,18 @@ public class Home_Page extends BrowserUtil{
             return element;
         }
 
+        public static List<WebElement> tab_numbers(){
+                elements = driver.findElements(By.xpath(".//a[(substring(\"**********\",1,string-length(text())) = translate(text(), \"0123456789\", \"**********\")) and (number(text()) = text())]"));
+                Log.info("[" + Home_Page.class.getSimpleName() + "] - " + "Tab numbers found on the Home Page");
+            return elements;
+        }
+
+        public static List<WebElement> tab_images(){
+                elements = driver.findElements(By.xpath(".//img[@class = \"marketingStageContentImage\"]"));
+                Log.info("[" + Home_Page.class.getSimpleName() + "] - " + "Tab images found on the Home Page");
+            return elements;
+        }
+
         public static class TopNavigation {
 
                public static LinkedHashMap express() throws NoSuchElementException{
@@ -290,3 +315,4 @@ public class Home_Page extends BrowserUtil{
             }
         }
     }
+
