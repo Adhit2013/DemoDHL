@@ -10,17 +10,27 @@ import java.util.Iterator;
 public class CaptureScreenshot{
     public static void main(String [] str) throws IOException, InterruptedException{
         BrowserUtil.openBrowser();
-        Iterator<WebElement> tabNums = Home_Page.tab_numbers().iterator();
-        Iterator<WebElement> tabImages = Home_Page.tab_images().iterator();
 
-        WebElement tabImage = tabImages.next();
-
-        while(tabNums.hasNext()) {
-            WebElement tabNum = tabNums.next();
-            tabNum.click();
-            Thread.sleep(2000);
-            ObjectUtil.saveScreenshot(tabImage, new File(Constant.ScreenShot_Path + "\\Home\\Home_" + tabNum.getText() + ".png"));
+        if(str.length == 0 || str.length > 1)
+        {
+            Log.info("Wrong number of arguments");
+            System.exit(1);
         }
+
+        if(str[0].equals("home")) {
+            Iterator<WebElement> tabNums = Home_Page.tab_numbers().iterator();
+            Iterator<WebElement> tabImages = Home_Page.tab_images().iterator();
+
+            WebElement tabImage = tabImages.next();
+
+            while (tabNums.hasNext()) {
+                WebElement tabNum = tabNums.next();
+                tabNum.click();
+                Thread.sleep(2000);
+                ObjectUtil.saveScreenshot(tabImage, new File(Constant.ScreenShot_Path + "\\Home\\Home_" + tabNum.getText() + ".png"));
+            }
+        }
+
         BrowserUtil.closeBrowser();
     }
 }
