@@ -14,6 +14,8 @@ public class Constant {
     public static final String URL;
     public static final String ScreenShot_Path;
     public static final String Resource_Path;
+    public static final String Native_Path;
+    public static final String Ascii_Path;
 
     static {
         try {
@@ -28,6 +30,8 @@ public class Constant {
         URL = "http://www.dhl.com";
         Driver_Path = props.getProperty("project.directory") + "\\resources\\chromedriver.exe";
         Resource_Path = props.getProperty("project.directory") + "\\resources";
+        Native_Path = Resource_Path + "\\locations\\native";
+        Ascii_Path = Resource_Path + "\\locations\\ascii";
         ScreenShot_Path = Resource_Path + "\\screenshots";
     }
 }

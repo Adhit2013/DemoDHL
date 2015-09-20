@@ -28,3 +28,15 @@ Feature: As a user I want to view DHL Home Page
         |   7    |
         |   8    |
         |   9    |
+        |   10   |
+
+  Scenario Outline:: User chooses location from dropdown
+
+    Given User access DHL Home Page in browser
+    When  User selects <location> from dropdown
+    Then  Home Page should be displayed in <language> for <location>
+
+    Examples:
+      | location | language |
+      | China, People's Republic | cn |
+      | Japan | jp |

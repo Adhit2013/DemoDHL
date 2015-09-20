@@ -3,6 +3,8 @@ package org.dhl.utils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class BrowserUtil {
 
     public static WebDriver driver = null;
@@ -15,6 +17,7 @@ public class BrowserUtil {
         if(driver == null) {
             System.setProperty("webdriver.chrome.driver", Constant.Driver_Path);
             driver = new ChromeDriver();
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
             driver.get(Constant.URL);
             Log.info("[" + BrowserUtil.class.getSimpleName() + "] - " + "Driver initialized");
         }
@@ -23,5 +26,13 @@ public class BrowserUtil {
     public static void closeBrowser(){
         driver.close();
         driver.quit();
+    }
+
+    public static String getURL(){
+        return driver.getCurrentUrl();
+    }
+
+    public static void navigateTo(String url){
+        driver.navigate().to(Constant.URL);
     }
 }

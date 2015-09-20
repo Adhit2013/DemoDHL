@@ -8,6 +8,7 @@ import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 
+import org.dhl.utils.Constant;
 import org.dhl.utils.Log;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -34,7 +35,7 @@ public class HomeLoad {
         }
 
         try {
-            Home_Page.Logo().click();
+            BrowserUtil.navigateTo(Constant.URL);
             assertTrue(BrowserUtil.driver.getCurrentUrl().equals("http://www.dhl.com/en.html"));
             Log.info(testStep + " passed");
         }
@@ -65,7 +66,7 @@ public class HomeLoad {
 
         (new WebDriverWait(BrowserUtil.driver, 10)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
-                return d.getTitle().equals("DHL | Global | English");
+                return ((JavascriptExecutor)d).executeScript("return document.readyState").equals("complete");
             }
         });
 

@@ -187,6 +187,18 @@ public class Home_Page extends BrowserUtil{
             return element;
         }
 
+        public static WebElement li_location(String loc) throws NoSuchElementException{
+            try{
+                element = driver.findElement(By.xpath(".//*[@class='countryList styledDropdown']/li[text()=\"" + loc + "\"]"));
+                Log.info("[" + Home_Page.class.getSimpleName() + "] - " + loc + " found in the location drop down on the Home Page");
+            }
+            catch (NoSuchElementException nsee){
+                Log.error("[" + Home_Page.class.getSimpleName() + "] - " + loc + " not found in the location drop down on Home Page");
+                throw(nsee);
+            }
+            return element;
+
+        }
         public static WebElement but_Track() throws NoSuchElementException{
             try{
                 element = driver.findElement(By.xpath(".//*[@id='trackbut_crossrefpar1_taskcenter_taskcentertabs_item1229046233349_par_expandablelink_insideparsys_fasttrack']"));
