@@ -222,6 +222,17 @@ public class Home_Page extends BrowserUtil{
             return elements;
         }
 
+        public static WebElement lnk_DCT() throws NoSuchElementException{
+            try{
+                element = driver.findElement(By.xpath(".//*[text()='Get Rate and Time Quote']"));
+                Log.info("[" + Home_Page.class.getSimpleName() + "] - " + "DHL Capability Tool found on the Home Page");
+            }catch (NoSuchElementException nsee){
+                Log.error("[" + Home_Page.class.getSimpleName() + "] - " + "DHL Capability Tool not found on the Home Page");
+                throw(nsee);
+            }
+            return element;
+        }
+
         public static class TopNavigation {
 
                public static LinkedHashMap express() throws NoSuchElementException{
