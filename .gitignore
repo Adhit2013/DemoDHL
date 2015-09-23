@@ -1,0 +1,10 @@
+.idea\
+cucumber-reporting\
+cucumber-reports\
+logs\
+report\
+resources\screenshots\
+resources\locations\ascii\
+resources\project.properties
+target\
+DemoDHL.iml
