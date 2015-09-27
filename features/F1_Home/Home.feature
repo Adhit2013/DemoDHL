@@ -28,7 +28,6 @@ Feature: As a user I want to view DHL Home Page
       |   7    |
       |   8    |
       |   9    |
-      |   10   |
 
   Scenario Outline: User chooses location from dropdown
 

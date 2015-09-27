@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.dhl.utils.Log;
 import org.dhl.utils.BrowserUtil;
 
+import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -224,7 +225,7 @@ public class Home_Page extends BrowserUtil{
 
         public static WebElement lnk_DCT() throws NoSuchElementException{
             try{
-                element = driver.findElement(By.xpath(".//*[text()='Get Rate and Time Quote']"));
+                element = driver.findElement(By.xpath(".//*[@id='express']//a[@href='http://dct.dhl.com/input.jsp?langId=en']"));
                 Log.info("[" + Home_Page.class.getSimpleName() + "] - " + "DHL Capability Tool found on the Home Page");
             }catch (NoSuchElementException nsee){
                 Log.error("[" + Home_Page.class.getSimpleName() + "] - " + "DHL Capability Tool not found on the Home Page");
