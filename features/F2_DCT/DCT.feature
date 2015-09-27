@@ -11,3 +11,5 @@ Feature: As a user I want to use DHL Capability Tool to get rate and time quote
     Examples:
      |       origin country         | origin zip | origin city | origin suburb |
      |        INDIA (IN)            |    412101  |    PUNE     |               |
+     |     UNITED KINGDOM (GB)      |      IG1   |   ILFORD    |               |
+     | UNITED STATES OF AMERICA (US)|    06901   |   STAMFORD  |               |
