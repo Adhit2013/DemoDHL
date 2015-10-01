@@ -295,7 +295,7 @@ public class DCT_Page extends BrowserUtil{
 
     public static WebElement button_AboutDutyatDestination() throws NoSuchElementException {
         try{
-            element = driver.findElement(By.xpath(".//*[text()='About Duty at Destination']"));
+            element = driver.findElement(By.xpath(".//*[@id='customs_info']"));
             Log.info("[" + DCT_Page.class.getSimpleName() + "] - " + "About Duty at Destination button found on the DCT Page");
         }catch (NoSuchElementException nsee){
             Log.error("[" + DCT_Page.class.getSimpleName() + "] - " + "About Duty at Destination button not found on the DCT Page");
@@ -306,7 +306,7 @@ public class DCT_Page extends BrowserUtil{
 
     public static WebElement button_AboutWeight() throws NoSuchElementException {
         try{
-            element = driver.findElement(By.xpath(".//*[text()='About Weight']"));
+            element = driver.findElement(By.xpath(".//*[@id='shipment_info']"));
             Log.info("[" + DCT_Page.class.getSimpleName() + "] - " + "About Weight button found on the DCT Page");
         }catch (NoSuchElementException nsee){
             Log.error("[" + DCT_Page.class.getSimpleName() + "] - " + "About Weight button not found on the DCT Page");

@@ -101,7 +101,7 @@
                 <version>2.10</version>
                 <executions>
                     <execution>
-                        <id>default-cli</id>
+                        <id>lib</id>
                         <goals>
                             <goal>copy-dependencies</goal>
                         </goals>
@@ -117,7 +117,7 @@
                 <version>1.0-alpha-2</version>
                 <executions>
                     <execution>
-                        <id>default-cli</id>
+                        <id>props</id>
                         <goals>
                             <goal>write-project-properties</goal>
                         </goals>
@@ -133,21 +133,37 @@
                 <version>1.4.0</version>
                 <executions>
                     <execution>
-                        <id>default-cli</id>
+                        <id>testdatagen1</id>
                         <goals>
                             <goal>exec</goal>
                         </goals>
+                        <configuration>
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>-classpath</argument>
+                                <argument>${project.directory}\target\test-classes;${project.directory}\target\lib\*</argument>
+                                <argument>org.dhl.utils.CaptureScreenshot</argument>
+                                <argument>home</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>testdatagen2</id>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>-classpath</argument>
+                                <argument>${project.directory}\target\test-classes;${project.directory}\target\lib\*</argument>
+                                <argument>org.dhl.utils.CaptureValue</argument>
+                                <argument>"UNITED STATES OF AMERICA (US)"</argument>
+                            </arguments>
+                        </configuration>
                     </execution>
                 </executions>
-                <configuration>
-                    <executable>java</executable>
-                    <arguments>
-                        <argument>-classpath</argument>
-                        <argument>${project.directory}\target\test-classes;${project.directory}\target\lib\*</argument>
-                        <argument>org.dhl.utils.CaptureScreenshot</argument>
-                        <argument>home</argument>
-                    </arguments>
-                </configuration>
+
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -155,7 +171,7 @@
                 <version>1.0-alpha-1</version>
                 <executions>
                     <execution>
-                        <id>default-cli</id>
+                        <id>i18n</id>
                         <goals>
                             <goal>native2ascii</goal>
                         </goals>
@@ -183,7 +199,7 @@
                 <version>2.6.1</version>
                 <executions>
                     <execution>
-                        <id>default-cli</id>
+                        <id>cleanse</id>
                         <goals>
                             <goal>clean</goal>
                         </goals>

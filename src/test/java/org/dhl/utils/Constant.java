@@ -16,6 +16,7 @@ public class Constant {
     public static final String Resource_Path;
     public static final String Native_Path;
     public static final String Ascii_Path;
+    public static final String TestData_Path;
 
     static {
         try {
@@ -33,5 +34,6 @@ public class Constant {
         Native_Path = Resource_Path + "\\locations\\native";
         Ascii_Path = Resource_Path + "\\locations\\ascii";
         ScreenShot_Path = Resource_Path + "\\screenshots";
+        TestData_Path = Resource_Path + "\\testdata";
     }
 }
